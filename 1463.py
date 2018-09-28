@@ -1,21 +1,19 @@
 N = int(input())
-l = []
 def check(n):
-    if n==1:
-        return 0
-    if l[n] > 0:
-        return l[n]
-    l[n] = check(n-1)+1
-    if n%3==0:
-        l[n] = min(check(n//3)+1, l[n])
-    if n%2==0:
-        l[n] = min(check(n//2)+1, l[n])
-    return l[n]
-
-def solution(n):
+    l = []
     for x in range(n+1):
-        l.append(0)
-    check(n)
-    return l[n]
+        l.append(n+1)
+    for x in range(1, n+1):
+        if x==1:
+            l[x] = 0
+        l[x] = min(l[x-1]+1, l[x])
+        if x%3==0:
+            l[x] = min(l[x//3]+1, l[x])
+        if x%2==0:
+            l[x] = min(l[x//2]+1, l[x])
+    return l
+def solution(n):
+    lst = check(n)
+    return lst[n]
 
 print(solution(N))
