@@ -13,4 +13,5 @@ answer = 0
 for x in dp[N]:
     answer += x
 answer %= 1000000000
+
 print(answer)
